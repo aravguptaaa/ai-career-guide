@@ -3,9 +3,8 @@ import docx
 import spacy
 import re
 from spacy.matcher import Matcher
-from .skills import SKILLS_LIST # Import our skills list from the other file
+from .skills import SKILLS_LIST
 
-# Load the spaCy model. We do this once when the module is loaded.
 nlp = spacy.load("en_core_web_sm")
 
 def extract_text_from_file(uploaded_file):
@@ -40,15 +39,13 @@ def extract_name(text):
 
 def extract_email(text):
     """Extracts the email using a regular expression."""
-    # This is a simple regex for finding email addresses.
     match = re.search(r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b', text)
     return match.group(0) if match else None
 
 def extract_skills(text):
     """Extracts skills using spaCy's Matcher."""
     matcher = Matcher(nlp.vocab)
-    # Create patterns for each skill in our list.
-    # This makes the matching case-insensitive.
+
     for skill in SKILLS_LIST:
         pattern = [{"LOWER": word} for word in skill.lower().split()]
         matcher.add(skill, [pattern])
@@ -56,7 +53,6 @@ def extract_skills(text):
     doc = nlp(text)
     matches = matcher(doc)
     
-    # Get the matched strings and remove duplicates
     found_skills = set()
     for match_id, start, end in matches:
         span = doc[start:end]
