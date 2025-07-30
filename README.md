@@ -16,8 +16,8 @@ This project is an end-to-end AI-powered platform that analyzes resumes, matches
 - **AI Orchestration:** LangChain
 - **LLM:** Ollama with `phi3:mini`
 - **NLP & Parsing:** spaCy, PyPDF2, python-docx
-- **Semantic Search (RAG):** Sentence-Transformers, ChromaDB
-- **Data Handling:** Pandas
+- **Semantic Search (RAG):** Sentence-Transformers, ChromaDB, scikit-learn
+- **Data Handling:** Python (Pandas, NumPy)
 
 
 ## Getting Started ##
