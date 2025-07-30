@@ -1,5 +1,3 @@
-# A list of skills to search for in the resume text.
-# This list can be expanded significantly.
 SKILLS_LIST = [
     # Programming Languages
     "python", "java", "c++", "c#", "javascript", "typescript", "ruby", "go", "swift", "kotlin", "php", "rust",
