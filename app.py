@@ -1,14 +1,13 @@
 import streamlit as st
 from utils.resume_parser import process_resume
 from utils.job_matcher import find_matching_jobs
-from utils.chatbot import generate_career_advice # Import our AI advisor
+from utils.chatbot import generate_career_advice
 
-st.set_page_config(layout="wide") # Use a wider layout for better display
+st.set_page_config(layout="wide")
 
 st.title("AI Career Guidance Platform")
 st.write("Upload your resume, find matching jobs, and get personalized AI-powered career advice.")
 
-# Use session_state to hold data across reruns
 if 'resume_data' not in st.session_state:
     st.session_state.resume_data = None
 if 'job_matches' not in st.session_state:
@@ -16,8 +15,8 @@ if 'job_matches' not in st.session_state:
 if 'career_advice' not in st.session_state:
     st.session_state.career_advice = None
 
-# --- Main Layout ---
-col1, col2 = st.columns([1, 2]) # Create a 1:2 ratio layout
+
+col1, col2 = st.columns([1, 2])
 
 with col1:
     st.header("Step 1: Your Resume")
@@ -27,7 +26,7 @@ with col1:
     )
     
     if uploaded_file:
-        if st.session_state.resume_data is None: # Process only once
+        if st.session_state.resume_data is None:
             with st.spinner("Analyzing resume..."):
                 st.session_state.resume_data = process_resume(uploaded_file)
 
